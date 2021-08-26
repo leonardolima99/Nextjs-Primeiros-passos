@@ -1,8 +1,9 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 
-export default function Home() {
+export default function Home({list}) {
   return (
     <div className={styles.container}>
       <Head>
@@ -13,9 +14,36 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Cinema Next!</a>
+          Filmes em destaque
         </h1>
+        
+        <ul className={styles.grid}>
+          {list.map(item => (
+            <li key={item.id} className={styles.card}>
+              <Image
+                src={`https://image.tmdb.org/t/p/original${item.poster_path}`}
+                alt={`Capa do filme ${item.title}`}
+                width="150"
+                height="225"
+              />
+              <br />
+              {item.title}
+            </li>
+          ))}
+        </ul>
+
       </main>
     </div>
   )
+}
+
+export async function getServerSideProps() {
+  const res = await fetch('http://localhost:3000/api/trending')
+  const json = await res.json()
+
+  return {
+    props: {
+      list: json.list
+    }
+  }
 }
