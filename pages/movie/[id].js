@@ -32,7 +32,7 @@ export default function Movie({info}) {
 }
 
 export async function getServerSideProps(context) {
-  const res = await fetch(`http://localhost:3000/api/movie?id=${context.params.id}`)
+  const res = await fetch(`https://nextjs-primeiros-passos.vercel.app/api/movie?id=${context.params.id}`)
 
   const { info } = await res.json()
 

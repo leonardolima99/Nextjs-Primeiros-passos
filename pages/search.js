@@ -11,7 +11,7 @@ export default function Search() {
   const handleSearch = async () => {
     if (!searchText) return
     
-    const res = await fetch(`http://localhost:3000/api/search?q=${searchText}`)
+    const res = await fetch(`https://nextjs-primeiros-passos.vercel.app/api/search?q=${searchText}`)
     const { list } = await res.json()
 
     setMovieList(list)
