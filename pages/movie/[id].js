@@ -3,10 +3,14 @@ import { useRouter } from 'next/router'
 import Image from 'next/image'
 import styles from '../../styles/Home.module.css'
 
-export default function Post() {
+export default function Movie() {
   const router = useRouter()
   const {id} = router.query
 
+  function handleGoBack() {
+    router.back()
+  }
+  
   return (
     <div className={styles.container}>
       <Head>
@@ -17,8 +21,9 @@ export default function Post() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Post acessado: {id}
+          Filme: {id}
         </h1>
+        <button onClick={handleGoBack}>Voltar</button>
       </main>
     </div>
   )
