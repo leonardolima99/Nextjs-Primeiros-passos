@@ -18,7 +18,9 @@ export default function Home({list}) {
         </h1>
 
         <Link href="/search">
-          Ir para busca
+          <a className={styles.link}>
+            Ir para busca
+          </a>
         </Link>
         
         <ul className={styles.grid}>
@@ -39,7 +41,10 @@ export default function Home({list}) {
             </li>
           ))}
         </ul>
-
+        <br />
+        <Link href="/about">
+          <a className={styles.link}>Sobre mim</a>
+        </Link>
       </main>
     </div>
   )
